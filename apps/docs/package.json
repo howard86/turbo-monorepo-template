@@ -27,7 +27,7 @@
     "@org/jest-config": "workspace:*",
     "@org/tailwind-config": "workspace:*",
     "@org/tsconfig": "workspace:*",
-    "@types/node": "^22.0.0",
+    "@types/node": "^24.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "autoprefixer": "^10.4.15",
