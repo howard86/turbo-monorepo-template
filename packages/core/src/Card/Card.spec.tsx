@@ -1,25 +1,26 @@
-import { render, screen } from '@testing-library/react'
-import { Card } from './Card'
+import { describe, expect, test } from "bun:test";
+import { render, screen } from "@testing-library/react";
+import type { ReactElement } from "react";
+import { Card } from "./Card";
 
-function EmptyIcon(): JSX.Element {
-  return <svg data-testid="SVG" />
+function EmptyIcon(): ReactElement {
+  return <svg data-testid="SVG" />;
 }
 
-describe('card', () => {
-  it('should render', () => {
-    expect.hasAssertions()
+describe("card", () => {
+  test("should render", () => {
     render(
       <Card
-        name="MOCK_NAME"
         description="MOCK_DESCRIPTION"
         href="MOCK_HREF"
         Icon={EmptyIcon}
-      />,
-    )
+        name="MOCK_NAME"
+      />
+    );
 
-    expect(screen.getByText('MOCK_NAME')).toBeInTheDocument()
-    expect(screen.getByText('MOCK_DESCRIPTION')).toBeInTheDocument()
-    expect(screen.getByRole('link')).toHaveAttribute('href', 'MOCK_HREF')
-    expect(screen.getByTestId('SVG')).toBeInTheDocument()
-  })
-})
+    expect(screen.getByText("MOCK_NAME")).not.toBeNull();
+    expect(screen.getByText("MOCK_DESCRIPTION")).not.toBeNull();
+    expect(screen.getByRole("link").getAttribute("href")).toBe("MOCK_HREF");
+    expect(screen.getByTestId("SVG")).not.toBeNull();
+  });
+});

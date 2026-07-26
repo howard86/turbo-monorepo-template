@@ -1,0 +1,33 @@
+version: 2
+
+updates:
+  - package-ecosystem: bun
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      bun:
+        patterns:
+          - "*"
+    ignore:
+      - dependency-name: next
+        update-types:
+          - version-update:semver-major
+      - dependency-name: react
+        update-types:
+          - version-update:semver-major
+      - dependency-name: react-dom
+        update-types:
+          - version-update:semver-major
+      - dependency-name: typescript
+        versions:
+          - ">= 7"
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      github-actions:
+        patterns:
+          - "*"

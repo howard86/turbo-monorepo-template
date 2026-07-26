@@ -2,10 +2,11 @@
   "exclude": ["node_modules"],
   "extends": "@org/tsconfig/nextjs.json",
   "compilerOptions": {
-    "rootDir": ".",
-    "baseUrl": ".",
+    "types": ["bun"],
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["./src/*"],
+      "@org/core": ["../../packages/core/src/index.tsx"],
+      "@org/utils": ["../../packages/utils/src/index.tsx"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx", "next-env.d.ts", ".next/types/**/*.ts"]

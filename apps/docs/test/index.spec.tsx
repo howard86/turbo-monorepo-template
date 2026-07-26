@@ -1,11 +1,13 @@
-describe('docs', () => {
-  // TODO: Reference https://github.com/vercel/next.js/issues/54038
-  it.todo('should render')
+import { describe, expect, test } from "bun:test";
+import { render, screen } from "@testing-library/react";
+import Docs from "../src/app/page";
 
-  // () => {
-  //   expect.hasAssertions()
-  //   render(<Docs />)
+describe("docs", () => {
+  test("should render", () => {
+    render(<Docs />);
 
-  //   expect(screen.getByText(/Turbo Monorepo Template/i)).toBeInTheDocument()
-  // }
-})
+    expect(
+      screen.getByRole("heading", { name: "Turbo Monorepo Template" })
+    ).not.toBeNull();
+  });
+});
