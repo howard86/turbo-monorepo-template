@@ -1,3 +1,4 @@
+import { describe, expect, test } from 'bun:test'
 import { render, screen } from '@testing-library/react'
 import type { ReactElement } from 'react'
 import { Card } from './Card'
@@ -7,8 +8,7 @@ function EmptyIcon(): ReactElement {
 }
 
 describe('card', () => {
-  it('should render', () => {
-    expect.hasAssertions()
+  test('should render', () => {
     render(
       <Card
         name="MOCK_NAME"
@@ -18,9 +18,9 @@ describe('card', () => {
       />,
     )
 
-    expect(screen.getByText('MOCK_NAME')).toBeInTheDocument()
-    expect(screen.getByText('MOCK_DESCRIPTION')).toBeInTheDocument()
-    expect(screen.getByRole('link')).toHaveAttribute('href', 'MOCK_HREF')
-    expect(screen.getByTestId('SVG')).toBeInTheDocument()
+    expect(screen.getByText('MOCK_NAME')).not.toBeNull()
+    expect(screen.getByText('MOCK_DESCRIPTION')).not.toBeNull()
+    expect(screen.getByRole('link').getAttribute('href')).toBe('MOCK_HREF')
+    expect(screen.getByTestId('SVG')).not.toBeNull()
   })
 })

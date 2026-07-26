@@ -13,13 +13,10 @@
     "build": "tsup src/index.tsx --format esm,cjs --dts --external react",
     "dev": "tsup src/index.tsx --format esm,cjs --watch --dts --external react",
     "lint": "TIMING=1 eslint \"src/**/*.ts*\"",
-    "test": "jest",
-    "test:watch": "jest --watch",
     "typecheck": "tsc --noEmit",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "devDependencies": {
-    "@org/jest-config": "workspace:*",
     "@org/tsconfig": "workspace:*",
     "@types/react": "19.2.17",
     "@types/react-dom": "19.2.3",

@@ -1,13 +1,12 @@
+import { describe, expect, test } from 'bun:test'
 import { toSlug } from './toSlug'
 
 describe('toSlug', () => {
-  it('should return empty string', () => {
-    expect.hasAssertions()
+  test('should return empty string', () => {
     expect(toSlug('')).toBe('')
   })
 
-  it('should remove white space', () => {
-    expect.hasAssertions()
+  test('should remove white space', () => {
     expect(toSlug('some thing')).toBe('some-thing')
   })
 })

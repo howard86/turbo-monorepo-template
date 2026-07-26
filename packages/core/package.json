@@ -13,14 +13,11 @@
     "build": "tsup",
     "dev": "tsup --watch",
     "lint": "TIMING=1 eslint \"src/**/*.ts*\"",
-    "test": "jest",
-    "test:watch": "jest --watch",
     "typecheck": "tsc --noEmit",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "devDependencies": {
     "@heroicons/react": "^2.0.18",
-    "@org/jest-config": "workspace:^0.0.1",
     "@org/tailwind-config": "workspace:^0.0.2",
     "@org/tsconfig": "workspace:*",
     "@types/react": "19.2.17",

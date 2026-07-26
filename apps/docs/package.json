@@ -8,8 +8,6 @@
     "start": "bun --bun next start",
     "dev": "bun --bun next dev -p 3002",
     "lint": "TIMING=1 next lint",
-    "test": "jest",
-    "test:watch": "jest --watch",
     "typecheck": "tsc --noEmit",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf .next"
   },
@@ -24,7 +22,6 @@
     "react-dom": "19.2.8"
   },
   "devDependencies": {
-    "@org/jest-config": "workspace:*",
     "@org/tailwind-config": "workspace:*",
     "@org/tsconfig": "workspace:*",
     "@types/node": "26.1.1",

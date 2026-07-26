@@ -6,7 +6,6 @@
       "outputs": ["dist/**", ".next/**"],
       "dependsOn": ["^build"]
     },
-    "test": {},
     "lint": {},
     "format": {},
     "dev": {
@@ -15,10 +14,6 @@
     },
     "clean": {
       "cache": false
-    },
-    "test:watch": {
-      "cache": false,
-      "persistent": true
     },
     "typecheck": {
       "dependsOn": ["^typecheck"],

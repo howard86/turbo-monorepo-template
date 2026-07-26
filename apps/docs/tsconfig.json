@@ -2,7 +2,7 @@
   "exclude": ["node_modules"],
   "extends": "@org/tsconfig/nextjs.json",
   "compilerOptions": {
-    "types": ["jest", "@testing-library/jest-dom"],
+    "types": ["bun"],
     "paths": {
       "@/*": ["./src/*"],
       "@org/core": ["../../packages/core/src/index.tsx"],
