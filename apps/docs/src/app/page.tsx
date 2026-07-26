@@ -17,10 +17,11 @@ const features: CardProps[] = [
     name: "Turborepo",
   },
   {
-    description: "Fast, disk space efficient package manager",
-    href: "https://pnpm.io/",
+    description:
+      "Bun is a fast JavaScript runtime, package manager, and test runner.",
+    href: "https://bun.sh/",
     Icon: ArchiveBoxArrowDownIcon,
-    name: "pnpm",
+    name: "Bun",
   },
   {
     description:
@@ -37,17 +38,18 @@ const features: CardProps[] = [
     name: "Tailwindcss",
   },
   {
-    description: "Find and fix problems in your JavaScript code ",
-    href: "https://turbo.build/repo",
+    description:
+      "Ultracite provides fast, opinionated formatting and linting with Biome.",
+    href: "https://www.ultracite.ai/",
     Icon: FunnelIcon,
-    name: "ESLlint",
+    name: "Ultracite",
   },
   {
     description:
-      "Jest is a delightful JavaScript Testing Framework with a focus on simplicity.",
-    href: "https://jestjs.io/",
+      "Bun Test is a fast test runner built directly into the Bun runtime.",
+    href: "https://bun.sh/docs/test",
     Icon: BeakerIcon,
-    name: "Jest",
+    name: "Bun Test",
   },
 ];
 
@@ -61,7 +63,7 @@ export default function Example() {
             Turbo Monorepo Template
           </h1>
           <p className="mx-auto mt-5 max-w-prose text-gray-500 text-xl">
-            A battery-included presets to bootstrap a monorepo
+            Batteries-included tooling to bootstrap a monorepo
           </p>
           <section className="grid grid-cols-1 gap-8 pt-12 sm:grid-cols-2 md:gap-12 lg:grid-cols-3">
             {features.map((feature) => (

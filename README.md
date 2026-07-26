@@ -1,76 +1,72 @@
-# Turborepo Design System starter with Changesets
+# Turborepo Design System Starter with Changesets
 
-This is an official React design system starter powered by Turborepo. Versioning and package publishing is handled by [Changesets](https://github.com/changesets/changesets) and fully automated with GitHub Actions.
+A React design system monorepo powered by [Bun](https://bun.sh/), [Turborepo](https://turborepo.com/), and [Changesets](https://github.com/changesets/changesets).
 
-## What's inside?
+## Requirements
 
-This Turborepo includes the following:
+- [Bun 1.3.14](https://bun.sh/)
+- [typos](https://github.com/crate-ci/typos) and [gitleaks](https://github.com/gitleaks/gitleaks) for local Git hooks:
 
-### Apps and Packages
+  ```sh
+  brew install typos-cli gitleaks
+  ```
 
-- `docs`: A placeholder documentation site powered by [Next.js](https://nextjs.org)
-- `@org/core`: core React components
-- `@org/utils`: shared React utilities
-- `@org/tsconfig`: shared `tsconfig.json`s used throughout the monorepo
-- `eslint-config-org`: ESLint preset
+## Workspaces
 
-Each package and app is 100% [TypeScript](https://www.typescriptlang.org/).
+Bun installs the `apps/*` and `packages/*` workspaces declared in the root `package.json`:
 
-### Utilities
+- `apps/docs`: Next.js documentation site
+- `packages/core`: published React components
+- `packages/utils`: published React utilities
+- `packages/tailwind-config`: shared Tailwind CSS configuration
+- `packages/tsconfig`: shared TypeScript configuration
 
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-## Using this example
-
-Run the following command:
+Install the exact dependency versions from `bun.lock`:
 
 ```sh
-npx degit vercel/turbo/examples/with-changesets with-changesets
-cd with-changesets
-yarn install
-git init . && git add . && git commit -m "Init"
+bun install --frozen-lockfile
 ```
 
-### Useful commands
+## Commands
 
-- `yarn build` - Build all packages and the docs site
-- `yarn dev` - Develop all packages and the docs site
-- `yarn lint` - Lint all packages
-- `yarn changeset` - Generate a changeset
-- `yarn clean` - Clean up all `node_modules` and `dist` folders (runs each package's clean script)
+Run commands from the repository root:
 
-### Changing the npm organization scope
+| Command | Purpose |
+| --- | --- |
+| `bun run dev` | Start all development tasks |
+| `bun run build` | Build every workspace |
+| `bun run check` | Check formatting and lint rules with Ultracite |
+| `bun run fix` | Apply Ultracite fixes |
+| `bun run knip` | Find unused files, exports, and dependencies |
+| `bun run typecheck` | Type-check TypeScript workspaces |
+| `bun run test` | Build test dependencies and run Bun Test |
+| `bun run test:watch` | Run Bun Test in watch mode |
+| `bun run changeset` | Record a package release changeset |
 
-The npm organization scope for this design system starter is `@org`. To change this, it's a bit manual at the moment, but you'll need to do the following:
+## Quality Gates
 
-- Rename folders in `packages/*` to replace `@org` with your desired scope
-- Search and replace `@org` with your desired scope
-- Re-run `yarn install`
+[Husky](https://typicode.github.io/husky/) runs:
 
-## Versioning and Publishing packages
+- **pre-commit:** Ultracite on staged files and gitleaks on the staged diff
+- **commit-msg:** conventional commit validation
+- **pre-push:** full Ultracite check, type-check, tests, unused code/dependency detection, typos, and gitleaks on `origin/main..HEAD`
 
-Package publishing has been configured using [Changesets](https://github.com/changesets/changesets). Please review their [documentation](https://github.com/changesets/changesets#documentation) to familiarize yourself with the workflow.
+Use `git commit --no-verify` or `git push --no-verify` only when intentionally bypassing the corresponding local hook. CI still enforces the repository gates.
 
-This example comes with automated npm releases setup in a [GitHub Action](https://github.com/changesets/action). To get this working, you will need to create an `NPM_TOKEN` and `GITHUB_TOKEN` in your repository settings. You should also install the [Changesets bot](https://github.com/apps/changeset-bot) on your GitHub repository as well.
+The shared [`howard86/actions`](https://github.com/howard86/actions) workflow installs from the frozen Bun lockfile and runs Ultracite, type-checking, Bun Test, builds, unused file/export/dependency detection, typos, gitleaks, and workflow validation for pushes and pull requests targeting `main`.
 
-For more information about this automation, refer to the official [changesets documentation](https://github.com/changesets/changesets/blob/main/docs/automating-changesets.md)
+[Dependabot](https://docs.github.com/en/code-security/dependabot) checks Bun dependencies and GitHub Actions weekly. Updates are grouped; major Next.js, React, and TypeScript upgrades remain manual.
 
-### npm
+## Package Versioning and Publishing
 
-If you want to publish package to the public npm registry and make them publicly available, this is already setup.
+[Changesets](https://github.com/changesets/changesets) manages versions for the publishable `@org/core` and `@org/utils` packages.
 
-To publish packages to a private npm organization scope, **remove** the following from each of the `package.json`'s
+1. Run `bun run changeset` with a package change and commit the generated file.
+2. After changes reach `main`, the release workflow opens or updates the Changesets version PR.
+3. Merging that PR publishes the packages to npm.
 
-```diff
-- "publishConfig": {
--  "access": "public"
-- },
-```
+Configure `NPM_TOKEN` as a repository secret for publishing. The workflow uses GitHub's provided `GITHUB_TOKEN` to manage the version PR.
 
-### GitHub Package Registry
+Packages publish publicly by default. To use a private npm organization scope, remove `"access": "public"` from each published package's `publishConfig`.
 
-See [Working with the npm registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry#publishing-a-package-using-publishconfig-in-the-packagejson-file)
+To change the `@org` scope, rename the affected packages, replace `@org` references, and run `bun install`.
