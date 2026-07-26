@@ -1,5 +1,12 @@
 # @org/docs
 
+## 0.0.3
+
+### Patch Changes
+
+- Updated dependencies [4e77eb5]
+  - @org/core@0.0.3
+
 ## 0.0.2
 
 ### Patch Changes
