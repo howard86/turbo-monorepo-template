@@ -16,7 +16,7 @@ jobs:
       pull-requests: write
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v6
 
       - name: Setup Bun and install dependencies
         uses: howard86/actions/setup@402ce305af6a7cd037b84c13b41134f451708cdc # v2.0.2
