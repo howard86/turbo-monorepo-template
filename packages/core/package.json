@@ -15,7 +15,7 @@
     "lint": "TIMING=1 eslint \"src/**/*.ts*\"",
     "test": "jest",
     "test:watch": "jest --watch",
-    "type-check": "tsc --noEmit",
+    "typecheck": "tsc --noEmit",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "devDependencies": {
@@ -23,14 +23,14 @@
     "@org/jest-config": "workspace:^0.0.1",
     "@org/tailwind-config": "workspace:^0.0.2",
     "@org/tsconfig": "workspace:*",
-    "@types/react": "^19.0.0",
-    "@types/react-dom": "^19.0.0",
+    "@types/react": "19.2.17",
+    "@types/react-dom": "19.2.3",
     "clsx": "^2.0.0",
     "eslint-config-org": "workspace:*",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
     "tsup": "^8.0.0",
-    "typescript": "^5.1.6"
+    "typescript": "6.0.3"
   },
   "publishConfig": {
     "access": "public"

@@ -1,11 +1,10 @@
 {
   "$schema": "https://turborepo.org/schema.json",
   "globalDependencies": ["**/.env.*local"],
-  "pipeline": {
+  "tasks": {
     "build": {
       "outputs": ["dist/**", ".next/**"],
-      "dependsOn": ["^build"],
-      "env": ["ANALYZE"]
+      "dependsOn": ["^build"]
     },
     "test": {},
     "lint": {},
@@ -21,8 +20,14 @@
       "cache": false,
       "persistent": true
     },
-    "type-check": {
-      "cache": false
+    "typecheck": {
+      "dependsOn": ["^typecheck"],
+      "inputs": [
+        "**/*.{ts,tsx}",
+        "tsconfig.json",
+        "tsconfig.*.json",
+        "$TURBO_ROOT$/packages/tsconfig/**/*.json"
+      ]
     }
   }
 }

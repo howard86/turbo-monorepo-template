@@ -1,12 +1,11 @@
-import type { DivProps, SVGProps } from 'react-html-props'
-import type { FC, PropsWithoutRef } from 'react'
+import type { ComponentPropsWithoutRef, FC } from 'react'
 import clsx from 'clsx'
 
-export interface CardProps extends DivProps {
+export interface CardProps extends ComponentPropsWithoutRef<'div'> {
   name: string
   description: string
   href: string
-  Icon: FC<PropsWithoutRef<SVGProps>>
+  Icon: FC<ComponentPropsWithoutRef<'svg'>>
 }
 
 export function Card({ Icon, name, description, href, className }: CardProps) {

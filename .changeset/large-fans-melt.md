@@ -1,5 +1,5 @@
 ---
-
+"@org/core": patch
 ---
 
-chore: update lockfile settings with .npmrc in root folder
+Migrate CardProps to native React HTML and SVG types.

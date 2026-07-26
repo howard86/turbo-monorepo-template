@@ -1,7 +1,8 @@
 import { render, screen } from '@testing-library/react'
+import type { ReactElement } from 'react'
 import { Card } from './Card'
 
-function EmptyIcon(): JSX.Element {
+function EmptyIcon(): ReactElement {
   return <svg data-testid="SVG" />
 }
 
