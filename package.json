@@ -24,7 +24,7 @@
     "prepare": "husky"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.5",
+    "@biomejs/biome": "2.5.6",
     "@changesets/cli": "^2.26.2",
     "@commitlint/cli": "21.2.1",
     "@commitlint/config-conventional": "21.2.0",
@@ -39,7 +39,7 @@
     "next": "16.2.12",
     "react": "19.2.8",
     "react-dom": "19.2.8",
-    "turbo": "2.9.14",
+    "turbo": "2.10.7",
     "typescript": "6.0.3",
     "ultracite": "7.9.4"
   },
